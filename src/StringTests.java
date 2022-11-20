@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class StringTests {
 
@@ -22,5 +24,9 @@ public class StringTests {
                 .sorted((s1, s2)-> s1.length()- s2.length())
                 .forEach(System.out::println);
         System.out.println(stringList);
+
+        var mapList = stringList.stream()
+                .collect(Collectors.toMap(Function.identity(),String::length));
+        System.out.println(mapList);
     }
 }
